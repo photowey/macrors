@@ -108,10 +108,12 @@ fn test_ternary_ne() {
 #[test]
 fn test_ternary_ne_date_time() {
     let now = SystemTime::now();
+    let now_add = now.add(Duration::from_millis(1_000));
+    let now_sub = now.sub(Duration::from_millis(1_000));
 
     let ne = ternary_ne!(now, now.add(Duration::from_millis(1_000)), 1, -1);
-    let eq = ternary_ne!(now, now, 1, -1);
+    let eq = ternary_ne!(now, now, now_add, now_sub);
 
     assert_eq!(1, ne);
-    assert_eq!(-1, eq);
+    assert_eq!(now_sub, eq);
 }
