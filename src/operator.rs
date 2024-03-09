@@ -16,8 +16,6 @@
 
 // ----------------------------------------------------------------
 
-/// [`ternary`]
-///
 /// A macro for ternary conditional operation([wiki](https://en.wikipedia.org/wiki/Ternary_conditional_operator)) in rust.
 ///
 /// This macro evaluates a condition and returns one of two expressions based on whether the condition
@@ -46,8 +44,6 @@ macro_rules! ternary {
     };
 }
 
-/// [`ternary_eq`]
-///
 /// A macro for ternary conditional operation with equality comparison.
 ///
 /// This macro compares two values and returns one of two expressions based on whether the values
@@ -75,8 +71,6 @@ macro_rules! ternary_eq {
     };
 }
 
-/// [`ternary_ne`]
-///
 /// A macro for ternary conditional operation with equality comparison.
 ///
 /// This macro compares two values and returns one of two expressions based on whether the values

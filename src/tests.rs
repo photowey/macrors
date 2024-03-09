@@ -16,6 +16,9 @@
 
 // ----------------------------------------------------------------
 
+use std::ops::{Add, Sub};
+use std::time::{Duration, SystemTime};
+
 use super::*;
 
 #[test]
@@ -67,12 +70,47 @@ fn test_ternary_eq() {
     assert_eq!(-1, ne);
 }
 
+#[test]
+fn test_ternary_eq_float() {
+    let seed = 2.0;
+
+    let eq = ternary_eq!(2.0, 2.0, 1.0, -1.0);
+    let ne = ternary_eq!(2.0, 2.1, 1.0, -1.0);
+
+    assert_eq!(1.0, eq);
+    assert_eq!(-1.0, ne);
+}
+
+#[test]
+fn test_ternary_eq_date_time() {
+    let now = SystemTime::now();
+    let now_add = now.add(Duration::from_millis(1_000));
+    let now_sub = now.sub(Duration::from_millis(1_000));
+
+    let eq = ternary_eq!(now, now, 1, -1);
+    let ne = ternary_eq!(now, now.add(Duration::from_millis(1_000)), now_add, now_sub);
+
+    assert_eq!(1, eq);
+    assert_eq!(now_sub, ne);
+}
+
 // ----------------------------------------------------------------
 
 #[test]
 fn test_ternary_ne() {
     let ne = ternary_ne!(3, 2, 1, -1);
     let eq = ternary_ne!(2, 2, 1, -1);
+
+    assert_eq!(1, ne);
+    assert_eq!(-1, eq);
+}
+
+#[test]
+fn test_ternary_ne_date_time() {
+    let now = SystemTime::now();
+
+    let ne = ternary_ne!(now, now.add(Duration::from_millis(1_000)), 1, -1);
+    let eq = ternary_ne!(now, now, 1, -1);
 
     assert_eq!(1, ne);
     assert_eq!(-1, eq);
