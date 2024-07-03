@@ -117,3 +117,26 @@ fn test_ternary_ne_date_time() {
     assert_eq!(1, ne);
     assert_eq!(now_sub, eq);
 }
+
+// ---------------------------------------------------------------- repeat
+
+#[test]
+fn test_repeat() {
+    let repeat_1 = repeat!("A", 5);
+    assert_eq!(vec!["A", "A", "A", "A", "A"], repeat_1);
+
+    let repeat_2 = repeat!(101, 5);
+    assert_eq!(vec![101, 101, 101, 101, 101], repeat_2);
+}
+
+#[test]
+fn test_repeat_str() {
+    let repeat_str_1 = repeat_str!("A", 5);
+    assert_eq!("AAAAA", repeat_str_1);
+
+    let repeat_str_2 = repeat_str!("A", 5, ",");
+    assert_eq!("A,A,A,A,A", repeat_str_2);
+
+    let repeat_str_3 = repeat_str!(101, 5, ",");
+    assert_eq!("101,101,101,101,101", repeat_str_3);
+}
