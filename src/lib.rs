@@ -18,6 +18,8 @@
 
 #[macro_use]
 pub mod operator;
+#[macro_use]
+pub mod repeat;
 
 // ----------------------------------------------------------------
 
