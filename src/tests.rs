@@ -140,3 +140,12 @@ fn test_repeat_str() {
     let repeat_str_3 = repeat_str!(101, 5, ",");
     assert_eq!("101,101,101,101,101", repeat_str_3);
 }
+
+// ---------------------------------------------------------------- strings.from
+
+#[test]
+#[allow(non_snake_case)]
+fn test_strings_Strings() {
+    let hw = Strings!("Hello, World");
+    assert_eq!("Hello, World", hw);
+}

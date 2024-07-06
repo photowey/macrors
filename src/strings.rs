@@ -14,23 +14,19 @@
  * limitations under the License.
  */
 
-// ----------------------------------------------------------------
-
-#[macro_use]
-pub mod operator;
+#![allow(non_snake_case)]
 
 // ----------------------------------------------------------------
 
-/// @since 0.2.0
-#[macro_use]
-pub mod repeat;
-
-// ----------------------------------------------------------------
-
-/// @since 0.3.0
-pub mod strings;
-
-// ----------------------------------------------------------------
-
-#[cfg(test)]
-mod tests;
+///
+/// ```rust
+/// use macrors::Strings;
+/// let hw = Strings!("Hello, World");
+/// assert_eq!("Hello, World", hw);
+/// ```
+#[macro_export]
+macro_rules! Strings {
+    ($text:expr) => {
+        String::from($text)
+    };
+}
